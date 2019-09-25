@@ -25,10 +25,20 @@ public class LoginTests extends TestCase{
 		assertNull(userAccount);
 	}
 	
-	public void testUnsuccesfullLoginWithIncorrectUserName() {
+	public void testUnsuccesfulLoginWithIncorrectUserName() {
 		userAccountManager.registerNewUser("trump", "@White0House", "@White0House", "Don", "Trump", "trump@gmail.com", "7024265734");
 		UserAccount userAccount = userAccountManager.login("trump2020", "@White0House"); 
 		assertNull(userAccount);
 	}
-	
+	public void testMultipleUserSuccessfulLogin() {
+		userAccountManager.registerNewUser("trump", "@White0House", "@White0House", "Don", "Trump", "trump@gmail.com", "7024265734");
+		userAccountManager.registerNewUser("trumpjr", "@White0House", "@White0House", "donny", "Trump", "trump@gmail.com", "7024265734");
+		userAccountManager.registerNewUser("etrump", "@White0House", "@White0House", "eric", "Trump", "trump@gmail.com", "7024265734");
+		UserAccount userAccount = userAccountManager.login("trump", "@White0House");
+		UserAccount userAccount2 = userAccountManager.login("trumpjr", "@White0House");
+		UserAccount userAccount3 = userAccountManager.login("etrump", "@White0House");
+		assertNotNull(userAccount);
+		assertNotNull(userAccount2);
+		assertNotNull(userAccount3);
+	}
 }
