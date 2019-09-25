@@ -84,7 +84,7 @@ public class UserAccount {
 		char[] special = {'!', '@', '#','$', '%', '^', '&', '*', '(', ')',
 						  '-', '_', '=', '+', '`', '~', '<', '>', '[', ']',
 						  '\\', '/', ',', '.', '?', '{', '}' };
-		if (password.length() < 5) {
+		if (password.length() < 6) {
 			return false; 
 		}
 		
@@ -177,7 +177,13 @@ public class UserAccount {
 	// you need to complete this method
 	public static boolean isEmailValid(String email){
 		// check if email is valid
-		return true;
+		// source https://www.tutorialspoint.com/validate-email-address-in-java
+		// source https://www.geeksforgeeks.org/check-email-address-valid-not-java/:
+	     String regex = "^[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+(?:\\."+ 
+                 		"[a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+)*@" + 
+                 		"(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                 		"A-Z]{2,7}$"; 
+	     return email.matches(regex);
 	}
 
 	public String getPhoneNumber(){
